@@ -30,46 +30,33 @@ function staircase(n) {
     // Write your code here
     let row = 0;
     for(row = 1; row <= n; row++){
-        printNSpaces(n - row);
-        printNAsterics(row);
-        '\n'
+        let spaces = printNSpaces(n - row);
+        let asterics = printNAsterics(row);
+        
+        console.log(spaces + asterics);
     }
    
 }
 
 function printNAsterics(n){
-    let finishedRow = "";
+    let astericsPrintables = "";
     for(let i = 0; i < n; i++){
-        finishedRow += "#";
+        astericsPrintables += "#";
     }
-    console.log(finishedRow);
+    return astericsPrintables;
 }
 
 function printNSpaces(n){
-    let finishedRow = "";
+    let spacesPrintables = "";
     for(let i = 0; i < n; i++){
-        finishedRow += " ";
+        spacesPrintables += " ";
     }
-    console.log(finishedRow);
+    return spacesPrintables;
 }
-function printNAsterics(n){
-    let finishedRow = "";
-    for(let i = 0; i < n; i++){
-        finishedRow += "#";
-    }
-    console.log(finishedRow);
-}
-
-function printNSpaces(n){
-    let finishedRow = "";
-    for(let i = 0; i < n; i++){
-        finishedRow += " ";
-    }
-    console.log(finishedRow);
-}
-
 function main() {
     const n = parseInt(readLine().trim(), 10);
 
     staircase(n);
 }
+
+staircase(5);
