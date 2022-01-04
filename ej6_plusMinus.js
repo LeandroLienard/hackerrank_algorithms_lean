@@ -27,48 +27,37 @@ function readLine() {
  */
 
 //{--
-function plusMinus(arr) {   // solucion hecha con subfunciones pero recorro el array 3 veces(1 por subfuncion)
-    showPositiveRatio(arr);
-    showNegativeRatio(arr);
-    showZerosRatio(arr);
+function plusMinus(arr) {   // solucion linda pasando funcs por parametros :)
+    showRatioSegunCriterio(arr, isPositive);
+    showRatioSegunCriterio(arr, isNegative);
+    showRatioSegunCriterio(arr, isZero);
 }
 
-function showPositiveRatio(arr){
+function showRatioSegunCriterio(arr, cond){
     let i = 0; 
     let positivesCount = 0;
 
     for(i = 0; i < arr.length; i++){
-        if(arr[i] > 0){
+        if(cond(arr[i]) ){              // aplicacion parcial: paso cond por parametro
             positivesCount++;
         }
     }
     console.log(positivesCount / arr.length);
 }
 
-function showNegativeRatio(arr){
-    let i = 0;
-    let negativesCount = 0;
+function isPositive(num){   return num > 0;}
+function isNegative(num){   return num < 0;}
+function isZero(num)    {   return num == 0;}
 
-    for(i = 0; i < arr.length; i++){
-        if(arr[i] < 0){
-            negativesCount ++;
-        }
-    }
-    console.log(negativesCount / arr.length);
-}
+// declaradas como const
+const esPar = (num) => num%2 == 0;
 
-function showZerosRatio(arr){
-    let i = 0;
-    let zerosCount = 0;
-
-    for(i = 0; i < arr.length; i++){
-        if(arr[i] == 0){
-            zerosCount++;
-        }
-    }
-    console.log(zerosCount / arr.length);
-}
+const isPositive2 = (num) => num > 0; 
+const isNegative2 = (num) => num < 0;
+const isZero2 = (num) => num == 0;
 // --}
+
+/*
 function plusMinus2(arr) {   // solucion recorriendo array 1 SOla vez, pero mas fea?
     let i = 0; 
     let positivesCount = 0, negativesCount=0, zerosCount = 0;
@@ -86,6 +75,7 @@ function plusMinus2(arr) {   // solucion recorriendo array 1 SOla vez, pero mas 
     console.log(negativesCount / arr.length);
     console.log(zerosCount / arr.length);
 }
+*/
 
 function main() {
     const n = parseInt(readLine().trim(), 10);
